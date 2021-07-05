@@ -1,0 +1,21 @@
+{
+  "name": "node-js-hello-world",
+  "version": "1.0.0",
+  "description": "A simple example of a dockerized Node.js basic app with Nginx and self signed SSL certificate",
+  "main": "index.js",
+  "repository": "https://github.com/SamWanekeya/dockerizing-node-js-with-nginx-and-self-signed-ssl-certificate.git",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "author": "Sam Wanekeya",
+  "license": "MIT",
+  "devDependencies": {
+    "eslint": "^4.16.0",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.8.0"
+  },
+  "dependencies": {
+    "dotenv": "^10.0.0"
+  }
+}

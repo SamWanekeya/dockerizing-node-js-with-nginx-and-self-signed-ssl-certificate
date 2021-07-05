@@ -1,0 +1,71 @@
+version: "3.9"
+
+services:
+  nodeapp_svc0:
+    container_name: nodeapp_svc0
+    hostname: nodeapp_svc0
+    build:
+      context: .
+    tty: true
+    restart: "on-failure"
+    volumes:
+      - nodeapp_volume:/nodeapp
+
+  nodeapp_svc1:
+    container_name: nodeapp_svc1
+    hostname: nodeapp_svc1
+    build:
+      context: .
+    tty: true
+    restart: "on-failure"
+    volumes:
+      - nodeapp_volume:/nodeapp
+
+  nodeapp_svc2:
+    container_name: nodeapp_svc2
+    hostname: nodeapp_svc2
+    build:
+      context: .
+    tty: true
+    restart: "on-failure"
+    volumes:
+      - nodeapp_volume:/nodeapp
+
+  nodeapp_svc3:
+    container_name: nodeapp_svc3
+    hostname: nodeapp_svc
+    build:
+      context: .
+    tty: true
+    restart: "on-failure"
+    volumes:
+      - nodeapp_volume:/nodeapp
+
+  nodeapp_svc4:
+    container_name: nodeapp_svc4
+    hostname: nodeapp_svc4
+    build:
+      context: .
+    tty: true
+    restart: "on-failure"
+    volumes:
+      - nodeapp_volume:/nodeapp
+
+  nodeapp_svc_loadbalancer:
+    container_name: nodeapp_svc_loadbalancer
+    hostname: nodeapp_svc_loadbalancer
+    build: ./nginx
+    tty: true
+    links:
+      - nodeapp_svc0
+      - nodeapp_svc1
+      - nodeapp_svc2
+      - nodeapp_svc3
+      - nodeapp_svc4
+    ports:
+      - '80:80'
+      - '443:443'
+    restart: "always"
+
+volumes:
+  nodeapp_volume:
