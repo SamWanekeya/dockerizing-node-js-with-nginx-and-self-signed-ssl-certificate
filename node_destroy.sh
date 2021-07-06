@@ -3,4 +3,4 @@
 set -e
 # safety switch, uninitialized variables will stop script.
 set -u
-docker-compose -f docker-compose.yml down --rmi=all --volumes --remove-orphans
+docker-compose -f docker-compose.yml down --volumes --remove-orphans
