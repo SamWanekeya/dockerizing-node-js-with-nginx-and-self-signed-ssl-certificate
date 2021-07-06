@@ -1,14 +1,12 @@
-FROM nginx:1.17.9-alpine
+FROM nginx:1.21.0-alpine
 
-LABEL kakbima nodeapp
-
-FROM debian:10.3-slim
+FROM debian:10.10-slim
 
 RUN apt-get update \
     && apt-get install -y nginx openssl \
     && openssl req \
       -x509 \
-      -subj "/C=US/ST=TX/L=Austin/O=Home/CN=kakbima.com" \
+      -subj "/C=US/ST=TX/L=Austin/O=Home/CN=samwanekeya.com" \
       -nodes \
       -days 365 \
       -newkey rsa:2048 \

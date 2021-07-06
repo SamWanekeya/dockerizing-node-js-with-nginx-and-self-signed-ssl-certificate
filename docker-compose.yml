@@ -3,6 +3,7 @@ version: "3.9"
 services:
   nodeapp_svc0:
     container_name: nodeapp_svc0
+    image: nodeapp_svc0_img
     hostname: nodeapp_svc0
     build:
       context: .
@@ -10,9 +11,12 @@ services:
     restart: "on-failure"
     volumes:
       - nodeapp_volume:/nodeapp
+    ports:
+      - "5000:${APP_PORT}"
 
   nodeapp_svc1:
     container_name: nodeapp_svc1
+    image: nodeapp_svc1_img
     hostname: nodeapp_svc1
     build:
       context: .
@@ -20,9 +24,12 @@ services:
     restart: "on-failure"
     volumes:
       - nodeapp_volume:/nodeapp
+    ports:
+      - "5001:${APP_PORT}"
 
   nodeapp_svc2:
     container_name: nodeapp_svc2
+    image: nodeapp_svc2_img
     hostname: nodeapp_svc2
     build:
       context: .
@@ -30,9 +37,12 @@ services:
     restart: "on-failure"
     volumes:
       - nodeapp_volume:/nodeapp
+    ports:
+      - "5002:${APP_PORT}"
 
   nodeapp_svc3:
     container_name: nodeapp_svc3
+    image: nodeapp_svc3_img
     hostname: nodeapp_svc
     build:
       context: .
@@ -40,9 +50,12 @@ services:
     restart: "on-failure"
     volumes:
       - nodeapp_volume:/nodeapp
+    ports:
+      - "5003:${APP_PORT}"
 
   nodeapp_svc4:
     container_name: nodeapp_svc4
+    image: nodeapp_svc4_img
     hostname: nodeapp_svc4
     build:
       context: .
@@ -50,10 +63,13 @@ services:
     restart: "on-failure"
     volumes:
       - nodeapp_volume:/nodeapp
+    ports:
+      - "5004:${APP_PORT}"
 
   nodeapp_svc_loadbalancer:
     container_name: nodeapp_svc_loadbalancer
     hostname: nodeapp_svc_loadbalancer
+    image: nodeapp_svc_loadbalancer_img
     build: ./nginx
     tty: true
     links:
@@ -63,8 +79,8 @@ services:
       - nodeapp_svc3
       - nodeapp_svc4
     ports:
-      - '80:80'
-      - '443:443'
+      - "80:80"
+      - "443:443"
     restart: "always"
 
 volumes:
