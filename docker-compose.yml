@@ -12,7 +12,7 @@ services:
     volumes:
       - nodeapp_volume:/nodeapp
     ports:
-      - "5000:5000"
+      - "5000:${APP_PORT}"
 
   nodeapp_svc1:
     container_name: nodeapp_svc1
@@ -25,7 +25,7 @@ services:
     volumes:
       - nodeapp_volume:/nodeapp
     ports:
-      - "5001:5000"
+      - "5001:${APP_PORT}"
 
   nodeapp_svc2:
     container_name: nodeapp_svc2
@@ -38,7 +38,7 @@ services:
     volumes:
       - nodeapp_volume:/nodeapp
     ports:
-      - "5002:5000"
+      - "5002:${APP_PORT}"
 
   nodeapp_svc3:
     container_name: nodeapp_svc3
@@ -51,7 +51,7 @@ services:
     volumes:
       - nodeapp_volume:/nodeapp
     ports:
-      - "5003:5000"
+      - "5003:${APP_PORT}"
 
   nodeapp_svc4:
     container_name: nodeapp_svc4
@@ -64,7 +64,7 @@ services:
     volumes:
       - nodeapp_volume:/nodeapp
     ports:
-      - "5004:5000"
+      - "5004:${APP_PORT}"
 
   nodeapp_svc_loadbalancer:
     container_name: nodeapp_svc_loadbalancer
@@ -79,8 +79,8 @@ services:
       - nodeapp_svc3
       - nodeapp_svc4
     ports:
-      - '80:80'
-      - '443:443'
+      - "80:80"
+      - "443:443"
     restart: "always"
 
 volumes:
