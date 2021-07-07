@@ -82,6 +82,9 @@ services:
       - "80:80"
       - "443:443"
     restart: "always"
+    volumes:
+      - nodeapp_nginx_volume:/nodeapp
 
 volumes:
   nodeapp_volume:
+  nodeapp_nginx_volume:
