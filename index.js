@@ -2,7 +2,8 @@ const http = require('http');
 const dotenv = require("dotenv");
 dotenv.config();
 const hostname = process.env.HOSTNAME || '127.0.0.1';
-const port = process.env.APP_PORT || '5001';
+// If this is changed don't forget to change the upstream server service ports running in the nginx.conf file
+const port = process.env.APP_PORT || '4000';
 
 const server = http.createServer((req, res) => {
     res.statusCode = 200;
